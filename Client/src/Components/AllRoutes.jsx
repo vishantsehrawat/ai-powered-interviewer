@@ -4,6 +4,8 @@ import Login from '../Pages/Login'
 import Signup from '../Pages/Signup'
 import Home from '../Pages/Home'
 import Interview from '../Pages/Interview'
+import Result from '../Pages/Result'
+import { InterviewPage } from '../Pages/InterviewPage'
 
 
 
@@ -14,7 +16,8 @@ export const AllRoutes = () => {
                 <Route path='/login' element={<Login />}></Route>
                 <Route path='/signup' element={<Signup />}></Route>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/interview' element={<Interview/>}/>
+                <Route path='/interview' element={<InterviewPage/>}/>
+                <Route path='/result' element={<Result/>}/>
 
             </Routes>
 
