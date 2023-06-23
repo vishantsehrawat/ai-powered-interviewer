@@ -1,13 +1,14 @@
-package AIPowerInterviewer;
+package com.javatechie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendJavaApplication {
+public class ChatgptBotApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendJavaApplication.class, args);
+		SpringApplication.run(ChatgptBotApplication.class, args);
+		System.out.println("Application Started...............");
 	}
 
 }
