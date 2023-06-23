@@ -98,15 +98,13 @@ export const InterviewPage = () => {
             boxShadow={
                 "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
             }>
-
-            {/* <LetterPrinting /> */}
+            <LetterPrinting />
 
             <Flex flexDirection={"column"} w={"90%"} justifyContent={"space-between"} gap={"50px"}>
                 <Counter />
 
 
                 <Text color={"white"} as={"b"}>Question {next+1} : {question[next]}</Text>
-
 
 
                 {/* <Editable
@@ -136,7 +134,6 @@ export const InterviewPage = () => {
                 />
 
                 <Flex alignItems={"center"} justifyContent={"space-evenly"}>
-
                     <Button disabled>Help?</Button>
                     <Button display={`${next==question.length-1?"none":"flex"}`} onClick={handleNext}>next</Button>
                     <Button display={`${next==question.length-1?"flex":"none"}`} onClick={handleSubmit} >Submit</Button>
@@ -148,3 +145,4 @@ export const InterviewPage = () => {
         </Box >
     )
 }
+

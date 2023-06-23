@@ -34,39 +34,43 @@ import {
 import { Link as LinkNav, NavLink, useNavigate } from 'react-router-dom';
 import { color } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
+import { Login, Logout } from '../Redux/authReducer/action';
+
 // import { Logout } from '../Redux/authReducer/Logout';
 
 export const Navbar = () => {
+
     const { isOpen, onToggle } = useDisclosure();
     const dispatch = useDispatch();
-    const { isAuth: auth, userDetails } = useSelector(
+    const { isAuth, userDetails, isError } = useSelector(
         (store) => store.authReducer
     );
     const navigate = useNavigate();
     const toast = useToast();
 
-    // const handleLogout = () => {
-    //     dispatch(Logout()).then((res) => {
-    //         console.log(res);
-    //         if (res.payload.status === 400) {
-    //             toast({
-    //                 title: res.payload.data.error || res.payload.message || '',
-    //                 description: res.payload.data.description || '',
-    //                 status: 'error',
-    //                 duration: 5000,
-    //                 isClosable: false
-    //             });
-    //         } else {
-    //             toast({
-    //                 title: res.payload.data.message,
-    //                 status: 'success',
-    //                 duration: 5000,
-    //                 isClosable: false
-    //             });
-    //             navigate('/');
-    //         }
-    //     });
-    // };
+    const handleLogout = () => {
+        dispatch(Logout()).then((res) => {
+            console.log(res);
+            if (res.payload.status === 400) {
+                toast({
+                    title: res.payload.data.error || res.payload.message || '',
+                    description: res.payload.data.description || '',
+                    status: 'error',
+                    duration: 2000,
+                    isClosable: false
+                });
+            } else {
+                toast({
+                    title: "logout successful",
+                    status: 'success',
+                    duration: 2000,
+                    isClosable: false
+                });
+                navigate('/');
+            }
+        });
+    };
+
 
     return (
         <Box boxShadow={'xl'} mt={'3px'}>
@@ -114,31 +118,21 @@ export const Navbar = () => {
                     <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                         <DesktopNav />
                     </Flex>
-                    <Input type='search' w={'30%'} />
+
                 </Flex>
 
-                {auth ? (
+                {isAuth ? (
                     <Menu>
                         <MenuButton>
-                            {/* Hi, {userDetails.username.split(' ')[0]} */}
-                            <Avatar bg='green.200' name={userDetails.username} />
+                            <Avatar bg='green.200' name={userDetails.usernameforchat} />
                         </MenuButton>
                         <MenuList>
                             <MenuItem bg={'none'} cursor='auto'>
-                                Hi, {userDetails.username.split(' ')[0]} !!!
+                                Hi, {userDetails.usernameforchat} !!!
                             </MenuItem>
-                            <MenuItem onClick={() => navigate("/addpost")}>Create New Blog</MenuItem>
-                            <MenuItem onClick={() => navigate('/profile')}>
-                                Your Profile
-                            </MenuItem>
-                            {userDetails.isAdmin ? (
-                                <MenuItem onClick={() => navigate('/admin')}>
-                                    Admin Panel
-                                </MenuItem>
-                            ) : (
-                                <></>
-                            )}
-                            <MenuItem >Logout</MenuItem>
+                            {/* <MenuItem onClick={() => navigate("/addpost")}>Create New Blog</MenuItem>
+                            <MenuItem onClick={() => navigate('/profile')}>Your Profile</MenuItem> */}
+                            <MenuItem onClick={handleLogout} >Logout</MenuItem>
 
                         </MenuList>
                     </Menu>
@@ -157,12 +151,14 @@ export const Navbar = () => {
                             fontSize={'sm'}
                             fontWeight={600}
                             colorScheme={'whatsapp'}
+                            bg={"rgb(65, 58, 89)"}
                         >
                             <LinkNav to={'/signup'}>Sign Up</LinkNav>
                         </Button>
                     </Stack>
                 )}
             </Flex>
+
 
             <Collapse in={isOpen} animateOpacity>
                 <MobileNav />
@@ -190,7 +186,7 @@ const DesktopNav = () => {
                                 color={linkColor}
                                 _hover={{
                                     textDecoration: 'none',
-                                    color: 'green'
+                                    colour: "rgb(59, 58, 79)"
                                 }}
                             >
                                 {/* _hover={{
@@ -335,15 +331,20 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
     {
-        label: 'About',
+        label: 'Category',
         children: [
             {
-                label: 'Ornamental Garden',
+                label: 'Frontend',
 
                 href: '#'
             },
             {
-                label: 'Indoor',
+                label: 'Backend',
+
+                href: '#'
+            },
+            {
+                label: 'Full-Stack',
 
                 href: '#'
             }
@@ -353,7 +354,7 @@ const NAV_ITEMS = [
         label: 'Contact'
     },
     {
-        label: 'Category',
+        label: 'About',
         href: '#'
     },
 

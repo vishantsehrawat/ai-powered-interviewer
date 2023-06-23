@@ -11,19 +11,15 @@ const LetterPrinting = () => {
         const interval = setInterval(() => {
             if (currentIndex >= 0 && currentIndex != fullText.length - 1) {
                 setText(prevText => prevText + fullText[currentIndex]);
-                currentIndex++;;
-
+                currentIndex++;
             }
-
             else if (currentIndex == fullText.length - 1) {
                 clearInterval(interval);
             }
-
             else {
                 clearInterval(interval); // Stop printing after all letters are printed
             }
         }, printDelay);
-
         return () => clearInterval(interval);
     }, [fullText, printDelay]);
 
