@@ -45,4 +45,22 @@ const myScores = async (req, res) => {
     }
 }
 
-module.exports = {getAllScores, myScores}
+const setScore = async (req, res) => {
+    try {
+        const {id} = req.params
+        const data = req.body
+        const newScore = new Score(data)
+        await newScore.save()
+        return res.json({
+            error: false,
+            message: "Score added success"
+        })
+    } catch (error) {
+        return res.json({
+            error: true,
+            message: error.message
+        })
+    }
+}
+
+module.exports = {getAllScores, myScores, setScore}
