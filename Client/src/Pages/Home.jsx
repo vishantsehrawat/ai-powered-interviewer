@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaNodeJs, FaJava, FaReact } from "react-icons/fa";
+import { Link as LinkNav, NavLink, useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
     const [course, setCourse] = useState("")
