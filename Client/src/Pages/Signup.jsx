@@ -159,15 +159,15 @@ export default function SignupCard() {
                             <Stack spacing={10} pt={2}>
                                 <Button
                                     loadingText='Submitting'
-                                    size='lg'
-                                    bg={'green.400'}
+                                    size='XXl'
+                                    bg={'teal.400'}
                                     color={'white'}
                                     _hover={{
-                                        bg: 'green.500'
+                                        bg: 'teal.500'
                                     }}
                                     type='submit'
                                 >
-                                    Sign up
+                                    <LinkNav to={"/login"}> Sign up</LinkNav>
                                 </Button>
                             </Stack>
 

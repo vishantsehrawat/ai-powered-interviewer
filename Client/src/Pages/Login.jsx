@@ -35,32 +35,19 @@ export default function SimpleCard() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const userDetails = {
             email,
             password
-        };
+        }
 
         dispatch(Login(userDetails)).then((res) => {
-            if (res.payload.status === 400) {
-                toast({
-                    title: res.payload.data.error || res.payload.message || '',
-                    description: res.payload.data.description || '',
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: false
-                });
+            if (location.state) {
+                navigate(location.state)
             } else {
-                toast({
-                    title: res.payload.data.message,
-                    status: 'success',
-                    duration: 5000,
-                    isClosable: false
-                });
-                navigate('/');
+                navigate("/")
             }
-        });
-    };
+        })
+    }
 
     // console.log(token);
 
@@ -116,12 +103,13 @@ export default function SimpleCard() {
 
                         <Button
                             w={'100%'}
-                            bg={'green.400'}
+                            bg={'teal.400'}
                             color={'white'}
                             _hover={{
-                                bg: 'green.500'
+                                bg: 'teal.500'
                             }}
                             type='submit'
+                            fontSize={"lg"}
                         >
                             Sign in
                         </Button>

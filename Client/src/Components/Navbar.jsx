@@ -34,9 +34,11 @@ import {
 import { Link as LinkNav, NavLink, useNavigate } from 'react-router-dom';
 import { color } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
+import { Login } from '../Redux/authReducer/action';
 // import { Logout } from '../Redux/authReducer/Logout';
 
 export const Navbar = () => {
+
     const { isOpen, onToggle } = useDisclosure();
     const dispatch = useDispatch();
     const { isAuth: auth, userDetails } = useSelector(
@@ -67,6 +69,7 @@ export const Navbar = () => {
     //         }
     //     });
     // };
+
 
     return (
         <Box boxShadow={'xl'} mt={'3px'}>
@@ -114,7 +117,7 @@ export const Navbar = () => {
                     <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                         <DesktopNav />
                     </Flex>
-                    <Input type='search' w={'30%'} />
+
                 </Flex>
 
                 {auth ? (
@@ -157,12 +160,14 @@ export const Navbar = () => {
                             fontSize={'sm'}
                             fontWeight={600}
                             colorScheme={'whatsapp'}
+                            bg={"rgb(65, 58, 89)"}
                         >
                             <LinkNav to={'/signup'}>Sign Up</LinkNav>
                         </Button>
                     </Stack>
                 )}
             </Flex>
+
 
             <Collapse in={isOpen} animateOpacity>
                 <MobileNav />
@@ -190,7 +195,7 @@ const DesktopNav = () => {
                                 color={linkColor}
                                 _hover={{
                                     textDecoration: 'none',
-                                    color: 'green'
+                                    colour: "rgb(59, 58, 79)"
                                 }}
                             >
                                 {/* _hover={{
@@ -335,15 +340,20 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
     {
-        label: 'About',
+        label: 'Category',
         children: [
             {
-                label: 'Ornamental Garden',
+                label: 'Frontend',
 
                 href: '#'
             },
             {
-                label: 'Indoor',
+                label: 'Backend',
+
+                href: '#'
+            },
+            {
+                label: 'Full-Stack',
 
                 href: '#'
             }
@@ -353,7 +363,7 @@ const NAV_ITEMS = [
         label: 'Contact'
     },
     {
-        label: 'Category',
+        label: 'About',
         href: '#'
     },
 
