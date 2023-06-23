@@ -77,7 +77,7 @@ const Home = () => {
                 </div>
                 <br />
                 <br />
-                <div style={{ width: "40%", margin: "auto", marginTop: "5px" }}>
+                <div style={{ width: "50%", margin: "auto", marginTop: "5px" }}>
                     <hr style={{ border: "1px solid white" }} />
                 </div>
                 <br />
