@@ -1,36 +1,28 @@
 const express = require("express");
 const axios = require("axios");
+const { Configuration, OpenAIApi } = require("openai");
+
 
 require("dotenv").config();
 
-const generateScoreRouter = express();
+const generateScoreRouter = express.Router();
+
+const configuration = new Configuration({
+    organization: "org-ECC0jYP0q5OXDndbHkeWfsXx",
+    apiKey: process.env.GPT_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
 // Route to compare questions and answers
 generateScoreRouter.post("/", async (req, res) => {
     try {
-        const messages = req.body.messages;
-
-        const response = await axios.post(
-            "https://api.openai.com/v1/completions",
-            {
-                "model": "text-davinci-003",
-                "prompt": "capital of india",
-                "max_tokens": 7,
-                "temperature": 0,
-                "top_p": 1,
-                "n": 1,
-                "stream": false,
-                "logprobs": null,
-                "stop": "\n"
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${process.env.GPT_API_KEY}`,
-                },
-            }
-        );
-
-        res.status(200).json({ response: response.data });
+        const messages = req.body.prompt;
+        const response = await openai.createCompletion({
+            model: 'text-davinci-003',
+            prompt: `${messages} `,
+            temperature: 0
+        })
+        console.log({ response: response.data.choices[0].text });
+        res.status(200).send({ response: response.data });
     } catch (error) {
         res.status(500).json({ error: "An error occurred" });
         console.log(error);
