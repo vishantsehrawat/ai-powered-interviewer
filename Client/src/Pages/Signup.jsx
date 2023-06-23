@@ -26,13 +26,11 @@ export default function SignupCard() {
     const toast = useToast();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [name, setName] = useState('');
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPass] = useState('');
-
-    const [gender, setGender] = useState('');
-    const [city, setCity] = useState('');
+    const [mobile, setMobile] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,13 +39,11 @@ export default function SignupCard() {
             name,
             email,
             password,
-
-            city,
-            gender
+            mobileNumber: mobile
         };
 
 
-        axios.post('/users/register', payload)
+        axios.post('http://localhost:8080/user/register', payload)
             .then((res) => {
                 toast({
                     title: res.data.message,
@@ -76,7 +72,7 @@ export default function SignupCard() {
             justify={'center'}
             bg={useColorModeValue('gray.50', 'gray.800')}
         >
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w={"100%"}>
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'} textAlign={'center'}>
                         Sign up
@@ -135,15 +131,16 @@ export default function SignupCard() {
 
 
 
-                            <FormControl id='City' isRequired>
-                                <FormLabel>City</FormLabel>
+                            <FormControl id='mobile' isRequired>
+                                <FormLabel>Mobile No.</FormLabel>
                                 <Input
-                                    type='text'
-                                    value={city}
-                                    onChange={(e) => setCity(e.target.value)}
+                                    type="number"
+                                    min={0}
+                                    value={mobile}
+                                    onChange={(e) => setMobile(e.target.value)}
                                 />
                             </FormControl>
-
+                            {/* 
                             <FormControl id='Gender' isRequired>
                                 <FormLabel>Gender</FormLabel>
                                 <Select
@@ -154,20 +151,20 @@ export default function SignupCard() {
                                     <option value='option2'>female</option>
                                     <option value='option3'>other</option>
                                 </Select>
-                            </FormControl>
+                            </FormControl> */}
 
                             <Stack spacing={10} pt={2}>
                                 <Button
                                     loadingText='Submitting'
                                     size='lg'
-                                    bg={'green.400'}
+                                    bg={'teal.400'}
                                     color={'white'}
                                     _hover={{
-                                        bg: 'green.500'
+                                        bg: 'teal.500'
                                     }}
                                     type='submit'
                                 >
-                                    Sign up
+                                    <LinkNav to={"/login"}> Sign up</LinkNav>
                                 </Button>
                             </Stack>
 
