@@ -31,38 +31,26 @@ export default function SimpleCard() {
         (store) => store.authReducer
     );
 
-    // Cookies.remove("token");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const userDetails = {
             email,
             password
-        };
+        }
 
-        dispatch(Login(userDetails)).then((res) => {
-            if (res.payload.status === 400) {
-                toast({
-                    title: res.payload.data.error || res.payload.message || '',
-                    description: res.payload.data.description || '',
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: false
-                });
-            } else {
-                toast({
-                    title: res.payload.data.message,
-                    status: 'success',
-                    duration: 5000,
-                    isClosable: false
-                });
-                navigate('/');
-            }
-        });
-    };
+        dispatch(Login(userDetails));
+    }
 
-    // console.log(token);
+    // Conditional rendering
+    if (isAuth) {
+        if (location.state) {
+            navigate(location.state)
+        } else {
+            navigate("/")
+        }
+    }
+
 
     return (
         <Flex
@@ -70,7 +58,8 @@ export default function SimpleCard() {
             justify={'center'}
             bg={useColorModeValue('gray.50', 'gray.800')}
         >
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w={"100%"}>
                 <Stack align={'center'}>
                     <Heading fontSize={{ base: '2xl', sm: '4xl' }}>
                         Sign in to your account
@@ -110,20 +99,20 @@ export default function SimpleCard() {
                             mt={6}
                             mb={10}
                         >
-                            <Checkbox>Remember me</Checkbox>
-                            <Link color={'green.400'}>Forgot password?</Link>
+                            {/* <Checkbox>Remember me</Checkbox> */}
+                            {/* <Link color={'green.400'}>Forgot password?</Link> */}
                         </Stack>
 
                         <Button
                             w={'100%'}
-                            bg={'green.400'}
+                            bg={'teal.400'}
                             color={'white'}
                             _hover={{
-                                bg: 'green.500'
+                                bg: 'teal.500'
                             }}
                             type='submit'
-                        >
-                            Sign in
+                            fontSize={"lg"}
+                        >    Sign in
                         </Button>
                     </form>
                 </Box>

@@ -7,7 +7,7 @@ const { BlacklistModel } = require("../models/blacklist.model");
 const store = require('store'); // for cross browser local storage
 const { uuidv4 } = require("../configs/uuidGenerator")
 const { authMiddleware } = require("../middlewares/authMiddleware.middleware");
-// const cors =  require("cors")
+const cors = require("cors")
 
 
 require("dotenv").config();
