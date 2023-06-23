@@ -5,9 +5,12 @@ const addQuestion = async (req, res) => {
       const data = req.body;
       const newQuestion = new Question(data);
       await newQuestion.save();
-    //   await Question.insertMany();
+      // await Question.insertMany();
         
-      return res.send("yhn s ho gya h")
+      return res.json({
+        error: false,
+        message: "successfully added new question"
+      })
     } catch (error) {
       return res.json({
         error: true,
@@ -57,3 +60,15 @@ const addQuestion = async (req, res) => {
 }
 
   module.exports = {addQuestion, allQuestions, myQuestions}
+
+
+
+
+
+
+
+
+
+
+
+  
