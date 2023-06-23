@@ -7,21 +7,27 @@ import {
     LOGOUT
 } from './actionType';
 
-export const Login = (userDetails) => {
-    return (dispatch) => {
-        dispatch({ type: LOGIN_REQUEST });
-        // console.log(userDetails);
-        return axios.post(``, userDetails).then(
-            (res) => dispatch({ type: LOGIN_SUCCESS, payload: res }),
-            (err) => dispatch({ type: LOGIN_FAILURE, payload: err.response })
-        );
-    };
+const baseUrl = "http://localhost:8080/user";
+
+
+export const Login = (userDetails) => (dispatch) => {
+    dispatch({ type: LOGIN_REQUEST });
+    // console.log(userDetails);
+    return axios.post(`${baseUrl}/login`, userDetails)
+        .then(res => {
+            console.log(res.data);
+            localStorage.setItem("token", res.data.token);
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+        }).catch(err => {
+            dispatch({ type: LOGIN_FAILURE, payload: err.response })
+        })
 };
+
 
 export const Logout = () => (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
     return axios
-        .get(``)
+        .get(`${baseUrl}/logout`)
         .then((res) => {
             console.log(res);
             dispatch({ type: LOGOUT, payload: res });

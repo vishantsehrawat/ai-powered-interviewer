@@ -7,14 +7,11 @@ import {
     LOGOUT
 } from './actionType';
 
-// let token = Cookies.get('token');
-// let userDetails = Cookies.get('userDetails');
-// userDetails = userDetails ? JSON.parse(userDetails) : {};
-
 const initialState = {
     isAuth: false,
     isError: false,
     isLoading: false,
+    userDetails: {},
     token: ""
 
 };
@@ -29,19 +26,17 @@ export const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 isLoading: false,
                 isAuth: true,
-                userDetails: payload.userDetails
+                userDetails: payload
             };
         }
         case LOGIN_FAILURE: {
             return { ...state, isError: true, isLoading: false, isAuth: false };
         }
 
-        // case LOGOUT: {
-        //     Cookies.remove('token');
-        //     Cookies.remove('rToken');
-        //     Cookies.remove('userDetails');
-        //     return { ...state, isAuth: false };
-        // }
+        case LOGOUT: {
+            localStorage.removeItem("token");
+            return { ...state, isAuth: false };
+        }
 
         default:
             return state;
