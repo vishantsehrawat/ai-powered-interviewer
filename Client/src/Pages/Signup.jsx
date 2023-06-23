@@ -159,7 +159,7 @@ export default function SignupCard() {
                             <Stack spacing={10} pt={2}>
                                 <Button
                                     loadingText='Submitting'
-                                    size='XXl'
+                                    size='lg'
                                     bg={'teal.400'}
                                     color={'white'}
                                     _hover={{

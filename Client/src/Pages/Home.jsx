@@ -84,12 +84,7 @@ const Home = () => {
                 </div>
                 <br />
                 <div style={{ textAlign: "center" }} onClick={handleStart}>
-                    <LinkNav to="/interviewPage">
-
-                        <button style={{ border: "1px solid white", padding: "10px 20px 10px 20px", borderRadius: "10px" }} className='text-center text-xl font-bold' >
-
-                            START</button>
-                    </LinkNav>
+                    <button style={{ border: "1px solid white", padding: "10px 20px 10px 20px", borderRadius: "10px" }} className='text-center text-xl font-bold' >START</button>
                 </div>
             </div>
             <br />
