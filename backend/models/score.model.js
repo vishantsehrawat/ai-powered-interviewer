@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const scoreSchema = new mongoose.Schema({
     userId: String,
-    score: Number,
+    score: String,
     course: {
         type: String, 
         enum: ["Node", "Java", "MERN"]
@@ -11,7 +11,10 @@ const scoreSchema = new mongoose.Schema({
         type: String,
         enum: ["beginner", "intermediate", "expert"]  
     },
-    date: String
+    date: {
+        type: Date,
+        default: Date.now
+      }
 });
 
 const Score = mongoose.model("score", scoreSchema);
