@@ -7,10 +7,10 @@ const scoreSchema = new mongoose.Schema({
     },
     interviewUniqueId: {
         type: String,
-        required: true,
+        // required: true,
     },
     score: {
-        type: Number, default: 0
+        type: mongoose.Schema.Types.Mixed, default: 0
     },
     course: {
         type: String,
