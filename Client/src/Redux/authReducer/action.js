@@ -7,7 +7,7 @@ import {
     LOGOUT
 } from './actionType';
 
-const baseUrl = "http://aiinterviewer.onrender.com/user";
+const baseUrl = "https://aiinterviewer.onrender.com/user";
 
 
 export const Login = (userDetails) => (dispatch) => {
