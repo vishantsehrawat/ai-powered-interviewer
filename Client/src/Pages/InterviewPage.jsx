@@ -132,7 +132,6 @@ export const InterviewPage = () => {
       boxShadow={
         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
       }>
-
       <Flex flexDirection={"column"} w={"90%"} justifyContent={"space-between"} gap={"50px"}>
         <Loader isLoading={isLoading} />
         <Counter />

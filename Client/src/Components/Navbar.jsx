@@ -23,7 +23,8 @@ import {
     MenuList,
     MenuItem,
     Avatar,
-    useToast
+    useToast,
+    Img
 } from '@chakra-ui/react';
 import {
     HamburgerIcon,
@@ -35,6 +36,7 @@ import { Link as LinkNav, NavLink, useNavigate } from 'react-router-dom';
 import { color } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { Login, Logout } from '../Redux/authReducer/action';
+
 
 // import { Logout } from '../Redux/authReducer/Logout';
 
@@ -111,7 +113,7 @@ export const Navbar = () => {
                         color={useColorModeValue('gray.800', 'white')}
                     >
                         <LinkNav to={'/'}>
-                            <Image src={'Client\Assets\logo.png'} w={'60px'} />
+                            <Img src={"./logo-2.jpg"} w={'100px'} />
                         </LinkNav>
                     </Text>
 
