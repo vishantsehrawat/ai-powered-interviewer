@@ -15,10 +15,16 @@ const openai = new OpenAIApi(configuration);
 // Route to compare questions and answers
 generateScoreRouter.post("/", async (req, res) => {
     try {
-        const messages = req.body.prompt;
+        const data = req.body.data;
+        var prompt = data.reduce((acc, { question, answer }) => {
+            acc += `question: ${question}\nanswer: ${answer}\n`;
+            return acc;
+        }, '');
+        prompt += "calculate correctness percentage of my answers and give average correctness percentage of all the answers in JSON format";
+        console.log("🚀 ~ file: generateScore.routes.js:25 ~ generateScoreRouter.post ~ prompt:", prompt)
         const response = await openai.createCompletion({
             model: 'text-davinci-003',
-            prompt: `${messages} `,
+            prompt: `${prompt} `,
             temperature: 0
         })
         console.log({ response: response.data.choices[0].text });
