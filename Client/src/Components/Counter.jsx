@@ -36,8 +36,7 @@ const Counter = ({handleSubmit}) => {
             questionSet:store.interviewReducer.questionSet
         }
     })
-    const time=questionSet.length*2;
-    const [minutes, setMinutes] = useState(time);
+    const [minutes, setMinutes] = useState(20);
     const [seconds, setSeconds] = useState(0);
     const navigate=useNavigate()
 
