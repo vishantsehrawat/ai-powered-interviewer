@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loader from '../Components/Loader';
 
 const Interview = () => {
     const [seconds, setSeconds] = useState(10 * 60);
@@ -27,7 +28,7 @@ const Interview = () => {
         <>
             <div>
                 <div>
-                   <p style={{}}>Time remaining: {formatTime(seconds)}</p>
+                    <p style={{}}>Time remaining: {formatTime(seconds)}</p>
                 </div>
             </div>
         </>
