@@ -3,7 +3,7 @@
 
 
 export const getMyscore = (payload) => (dispatch) => {
-    axios.get("http://aiinterviewer.onrender.com/compare", payload)
+    axios.get("https://aiinterviewer.onrender.com/compare", payload)
         .then(res => {
             const { response } = res
 

@@ -2,7 +2,7 @@
 import { GET_QUESTION_REQUEST_SUCCESS, POST_ANSWER_REQUEST_SUCCESS, POST_REQUEST_PENDING, POST_REQUEST_FAILURE, POST_SCORE_SUCCESS } from "../interviewReducer/actionType"
 import axios from "axios";
 
-const baseUrl = "http://aiinterviewer.onrender.com/question";
+const baseUrl = "https://aiinterviewer.onrender.com/question";
 
 export const getQuestion = (level, course) => (dispatch) => {
     dispatch({ type: POST_REQUEST_PENDING });
@@ -43,7 +43,7 @@ export const postQuestion = (obj) => (dispatch) => {
 export const generateInterviewScore = (payload) => (dispatch) => {
 
     dispatch({ type: POST_REQUEST_PENDING });
-    axios.post("http://aiinterviewer.onrender.com/compare", payload)
+    axios.post("https://aiinterviewer.onrender.com/compare", payload)
         .then(res => {
             console.log("COMPARE", res)
             const score = +res.data.response.match(/\d+$/)?.[0]
@@ -54,7 +54,7 @@ export const generateInterviewScore = (payload) => (dispatch) => {
                 level: payload.user.level,
                 course: payload.user.course
             }
-            axios.post(`http://aiinterviewer.onrender.com/score/addScore/${payload.user.uniqueUserId}`, scorePayload)
+            axios.post(`https://aiinterviewer.onrender.com/score/addScore/${payload.user.uniqueUserId}`, scorePayload)
                 .then(resp => {
                     console.log(resp)
                     console.log("SUCCESS")
@@ -72,7 +72,7 @@ export const generateInterviewScore = (payload) => (dispatch) => {
 
 
 export const getMyscore = (payload) => (dispatch) => {
-    axios.get("http://aiinterviewer.onrender.com/compare", payload)
+    axios.get("https://aiinterviewer.onrender.com/compare", payload)
         .then(res => {
             const { response } = res
 
