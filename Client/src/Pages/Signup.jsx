@@ -43,7 +43,7 @@ export default function SignupCard() {
         };
 
 
-        axios.post('http://localhost:8080/user/register', payload)
+        axios.post('http://aiinterviewer.onrender.com/user/register', payload)
             .then((res) => {
                 toast({
                     title: res.data.message,
