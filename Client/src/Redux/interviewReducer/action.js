@@ -1,15 +1,17 @@
 
 import { GET_QUESTION_REQUEST_SUCCESS, POST_ANSWER_REQUEST_SUCCESS, POST_REQUEST_PENDING, POST_REQUEST_FAILURE } from "../interviewReducer/actionType"
+import axios from "axios";
 
+const baseUrl = "http://localhost:8080/question";
 
+export const getQuestion = (level, course) => (dispatch) => {
 
-export const getQuestion = (obj) => (dispatch) => {
     dispatch({ type: POST_REQUEST_PENDING });
 
     axios
-        .get(`/questions/?${obj}`)
+        .get(`${baseUrl}/myQuestions?course=${course}&level=${level}`)
         .then((res) => {
-            // console.log('res-data', res.data);
+            console.log('res-data', res.data);
             dispatch({ type: GET_QUESTION_REQUEST_SUCCESS, payload: res });
         })
         .catch((err) => {
@@ -33,3 +35,14 @@ export const postQuestion = (obj) => (dispatch) => {
             dispatch({ type: POST_REQUEST_FAILURE });
         });
 };
+
+export const generateInterviewScore = (payload) => (dispatch) => {
+    axios.post("http://localhost:8080/compare")
+        .then(res => {
+
+        })
+        .catch((err) => {
+            // console.log('API FAILURE', err);
+            dispatch({ type: POST_REQUEST_FAILURE });
+        });
+}
