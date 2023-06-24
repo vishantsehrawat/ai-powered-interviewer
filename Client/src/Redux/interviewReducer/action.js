@@ -41,13 +41,9 @@ export const postQuestion = (obj) => (dispatch) => {
 
 // API for Submit Interview
 export const generateInterviewScore = (payload) => (dispatch) => {
-<<<<<<< Updated upstream
 
     dispatch({ type: POST_REQUEST_PENDING });
-    axios.post("http://localhost:8080/compare", payload)
-=======
     axios.post("http://aiinterviewer.onrender.com/compare", payload)
->>>>>>> Stashed changes
         .then(res => {
             console.log("COMPARE", res)
             const score = +res.data.response.match(/\d+$/)?.[0]
@@ -58,7 +54,7 @@ export const generateInterviewScore = (payload) => (dispatch) => {
                 level: payload.user.level,
                 course: payload.user.course
             }
-            axios.post(`http://localhost:8080/score/addScore/${payload.user.uniqueUserId}`, scorePayload)
+            axios.post(`http://aiinterviewer.onrender.com/score/addScore/${payload.user.uniqueUserId}`, scorePayload)
                 .then(resp => {
                     console.log(resp)
                     console.log("SUCCESS")
