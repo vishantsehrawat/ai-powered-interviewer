@@ -23,7 +23,7 @@ generateScoreRouter.post("/", async (req, res) => {
             acc += `question: ${question}\nanswer: ${answer}\n`;
             return acc;
         }, '');
-        prompt += "\n calculate correctness score of my answers\n, give 0 to empty answers and give average correctness score out 0f 100\n. of all the answers in this JSON format without \n {avgCorrectness_score: score}";
+        prompt += "\n calculate correctness score of my answers\n, give 0 to empty answers and give average correctness score out 0f 100\n. of all the answers in this JSON format without \n {avgCorrectness_score: score} \n in this format for score only write the score number";
         // prompt += "\n calculate correctness score of each of my answers\n, give 0 to empty answers and correctness score out 0f 100 for all the answers individually";
         // console.log("🚀 ~ file: generateScore.routes.js:25 ~ generateScoreRouter.post ~ prompt:", prompt)
         const response = await openai.createCompletion({
