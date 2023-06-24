@@ -33,8 +33,8 @@ generateScoreRouter.post("/", async (req, res) => {
         console.log({ response: response.data.choices[0].text });
         const responseObject = JSON.parse(response.data.choices[0].text)
         // console.log("🚀 ~ file: generateScore.routes.js:32 ~ generateScoreRouter.post ~ responseObject:", responseObject)
-        res.status(200).send({ response: response.data, responseObject: responseObject });
-        res.status(200).send({ response: response.data });
+        return res.status(200).send({ response: response.data, responseObject: responseObject });
+        // res.status(200).send({ response: response.data });
     } catch (error) {
         res.status(500).json({ error: "An error occurred" });
         console.log(error);
