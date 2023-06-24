@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { FaNodeJs, FaJava, FaReact } from "react-icons/fa";
-import { Link as LinkNav, NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Link as LinkNav, NavLink, useNavigate } from 'react-router-dom';
+import Loader from '../Components/Loader';
+import { getQuestion } from '../Redux/interviewReducer/action';
 
 
 const Home = () => {
     const [course, setCourse] = useState("")
     const [level, setLevel] = useState("")
+    const { isAuth, userDetails, isError } = useSelector((store) => store.authReducer);
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector(store => store.interviewReducer);
+    const navigate = useNavigate();
 
     const handleStart = () => {
-        let startData = {
-            course,
-            level
+        if (isAuth) {
+            getAllQuestions();
+        } else {
+            alert("Login first");
+            navigate("/login")
         }
-        console.log(startData)
+    }
+
+    const getAllQuestions = () => {
+        dispatch(getQuestion(level, course));
+        navigate("/interview");
     }
 
     return (
         <div style={{ backgroundColor: "#3b3a4f", color: "white" }}>
+            <Loader isLoading={isLoading} />
             <br />
             <div style={{ width: "80%", margin: "auto" }}>
                 <h1 className='text-center text-3xl font-bold'>Welcome to CogniTech</h1>
@@ -28,7 +42,7 @@ const Home = () => {
                 </div>
                 <br />
                 <div style={{ display: 'flex', width: "50%", justifyContent: "center", margin: "auto", justifyContent: "space-between" }}>
-                    <div value={course} onClick={() => setCourse("node")} style={{ border: "1px solid white", padding: "20px", borderRadius: "10px", width: "25%", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", cursor: "pointer", backgroundColor: `${course == "node" ? "#653fff" : "#3b3a4f"}` }}>
+                    <div value={course} onClick={() => setCourse("Node")} style={{ border: "1px solid white", padding: "20px", borderRadius: "10px", width: "25%", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", cursor: "pointer", backgroundColor: `${course == "Node" ? "#653fff" : "#3b3a4f"}` }}>
                         <div style={{ display: "flex", justifyContent: "center" }}><FaNodeJs size={"25px"} color='#22ff00' /></div>
                         <h1 className='text-center text-xl font-bold'>NODE</h1>
                     </div>
@@ -84,7 +98,11 @@ const Home = () => {
                 </div>
                 <br />
                 <div style={{ textAlign: "center" }} onClick={handleStart}>
-                    <button style={{ border: "1px solid white", padding: "10px 20px 10px 20px", borderRadius: "10px" }} className='text-center text-xl font-bold' >START</button>
+                    <button
+                        style={{ border: "1px solid white", padding: "10px 20px 10px 20px", borderRadius: "10px" }}
+                        className='text-center text-xl font-bold'
+                        onClick={handleStart} >
+                        START</button>
                 </div>
             </div>
             <br />
