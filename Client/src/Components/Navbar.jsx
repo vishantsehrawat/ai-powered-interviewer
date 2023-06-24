@@ -132,7 +132,7 @@ export const Navbar = () => {
                             </MenuItem>
                             {/* <MenuItem onClick={() => navigate("/addpost")}>Create New Blog</MenuItem>
                             <MenuItem onClick={() => navigate('/profile')}>Your Profile</MenuItem> */}
-                            <MenuItem>Profile</MenuItem>
+                            <MenuItem><LinkNav to={'/profile'}>Profile</LinkNav></MenuItem>
                             <MenuItem onClick={handleLogout} >Logout</MenuItem>
 
                         </MenuList>

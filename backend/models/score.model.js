@@ -1,16 +1,24 @@
 const mongoose = require("mongoose");
 
 const scoreSchema = new mongoose.Schema({
-    userId: String,
-    score: String,
-
+    userId: {
+        type: String,
+        required: true
+    },
+    interviewUniqueId: {
+        type: String,
+        required: true,
+    },
+    score: {
+        type: Number, default: 0
+    },
     course: {
-        type: String, 
+        type: String,
         enum: ["Node", "Java", "MERN"]
     },
     level: {
         type: String,
-        enum: ["beginner", "intermediate", "expert"]  
+        enum: ["beginner", "intermediate", "expert"]
     },
     date: {
 
