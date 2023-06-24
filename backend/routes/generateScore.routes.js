@@ -23,7 +23,8 @@ generateScoreRouter.post("/", async (req, res) => {
             acc += `question: ${question}\nanswer: ${answer}\n`;
             return acc;
         }, '');
-        prompt += "calculate correctness percentage of my answers and give average correctness score out 0f 100 of all the answers in JSON format";
+        prompt += "\n calculate correctness score of my answers\n, give 0 to empty answers and give average correctness score out 0f 100\n. of all the answers in this JSON format without \n {avgCorrectness_score: score}";
+        // prompt += "\n calculate correctness score of each of my answers\n, give 0 to empty answers and correctness score out 0f 100 for all the answers individually";
         // console.log("🚀 ~ file: generateScore.routes.js:25 ~ generateScoreRouter.post ~ prompt:", prompt)
         const response = await openai.createCompletion({
             model: 'text-davinci-003',
@@ -31,10 +32,8 @@ generateScoreRouter.post("/", async (req, res) => {
             temperature: 0
         })
         console.log({ response: response.data.choices[0].text });
-        const responseObject = JSON.parse(response.data.choices[0].text)
-        // console.log("🚀 ~ file: generateScore.routes.js:32 ~ generateScoreRouter.post ~ responseObject:", responseObject)
-        return res.status(200).send({ response: response.data, responseObject: responseObject });
-        // res.status(200).send({ response: response.data });
+        const cleanedResponse = response.data.choices[0].text.replace(/\n/g, '');
+        return res.status(200).send({ response: cleanedResponse });
     } catch (error) {
         res.status(500).json({ error: "An error occurred" });
         console.log(error);
