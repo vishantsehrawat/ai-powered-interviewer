@@ -15,7 +15,8 @@ const openai = new OpenAIApi(configuration);
 // Route to compare questions and answers
 generateScoreRouter.post("/", async (req, res) => {
     try {
-
+        const requestBody = req.body;
+        console.log("🚀 ~ file: generateScore.routes.js:19 ~ generateScoreRouter.post ~ requestBody:", requestBody)
         const data = req.body.data;
         console.log("🚀 ~ file: generateScore.routes.js:20 ~ generateScoreRouter.post ~ data:", data)
         var prompt = data.reduce((acc, { question, answer }) => {
