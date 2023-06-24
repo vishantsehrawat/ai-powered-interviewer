@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
 
 const interviewSchema = new mongoose.Schema({
-    interviewId: {
+    uniqueInterviewId: {
         type: String,
         required: true,
         unique: true
     },
     questionAnswers: [
         {
-            questionAnswersId: {
-                type: String,
-                required: true
-            },
             question: String,
-            answer: String
+            answer: String,
         }
     ],
     course: {
