@@ -1,7 +1,7 @@
-package com.javatechie.controller;
+package com.AIChatBoot.controller;
 
-import com.javatechie.dto.ChatGPTRequest;
-import com.javatechie.dto.ChatGptResponse;
+import com.AIChatBoot.dto.ChatGPTRequest;
+import com.AIChatBoot.dto.ChatGptResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;

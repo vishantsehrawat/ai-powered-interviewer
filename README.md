@@ -43,28 +43,19 @@
 * [@Ezhar Ashraf](https://github.com/izhar100)
 
 
-## Installation & Run
+## Installation & Run Our Project
 
-PORT = 8080
-
-MONGOURL =  mongodb+srv://vishants:vishants@cluster0.qpi9ba6.mongodb.net/aiPoweredInterviewer?retryWrites=true&w=majority
-TOKEN_SECRET = normaltoken
-REFRESH_TOKEN_SECRET = refershtokensecret
-REDIS_USERNAME = default
-REDIS_PASSWORD = Fy4RLLeH0Luwo6OnE08LbUbiizLm6SQI
-
-YOUR_KEY_ID= rzp_test_2bmVi5MRpANW6w
-YOUR_KEY_SECRET=fZPHlWVU8LY89D2QITZ52Aps
-
-# chat gpt api key 
-
-GPT_API_KEY =your key
+* PORT = 8080
+* Terminal
+* Run backend command :- cd backend  
+* npm run server
 
 
 
-## API Root Endpoint
+* Run frontend command :- cd Client
+ * npm start
 
-## API Module Endpoints
 
-### Login Module
+
+
 
