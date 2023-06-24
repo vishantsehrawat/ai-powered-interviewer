@@ -27,7 +27,7 @@ export default function SimpleCard() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const { isAuth, isLoading, isError } = useSelector(
+    const { isAuth, isLoading, isError, userDetails } = useSelector(
         (store) => store.authReducer
     );
 
