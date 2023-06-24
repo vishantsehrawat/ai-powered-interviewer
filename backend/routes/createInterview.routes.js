@@ -4,6 +4,7 @@ const createInterviewRouter = express.Router();
 
 // Create a new interview
 createInterviewRouter.post("/create", async (req, res) => {
+  req.body.uniqueInterviewId = uuidv4();
   try {
     const newInterview = new InterviewModel(req.body);
     const savedInterview = await newInterview.save();
