@@ -6,8 +6,7 @@ const questionRouter = express.Router();
 
 questionRouter.post("/addQuestion", addQuestion);
 
-questionRouter.get("/questions", allQuestions);
-
+questionRouter.get("/get", allQuestions);
 
 questionRouter.get("/myQuestions", myQuestions)
 

@@ -59,7 +59,7 @@ userRouter.post("/login", async (req, res) => {
                     // store.set('username', { name:myUser?.name })
                     redisClient.set("refreshtoken", refreshToken)
                     store.set("User", myUser, token, refreshToken);
-                    res.status(200).send({ msg: "User logged in", token, refreshToken, usernameforchat: myUser.name, userId: myUser._id })
+                    res.status(200).send({ msg: "User logged in", token, refreshToken, usernameforchat: myUser.name, userId: myUser._id,wholeUser: myUser})
                 });
             }
             else {
