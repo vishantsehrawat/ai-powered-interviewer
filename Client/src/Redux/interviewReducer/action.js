@@ -1,5 +1,5 @@
 
-import { GET_QUESTION_REQUEST_SUCCESS, POST_ANSWER_REQUEST_SUCCESS, POST_REQUEST_PENDING, POST_REQUEST_FAILURE } from "../interviewReducer/actionType"
+import { GET_QUESTION_REQUEST_SUCCESS, POST_ANSWER_REQUEST_SUCCESS, POST_REQUEST_PENDING, POST_REQUEST_FAILURE, POST_SCORE_SUCCESS } from "../interviewReducer/actionType"
 import axios from "axios";
 
 const baseUrl = "http://localhost:8080/question";
@@ -38,10 +38,30 @@ export const postQuestion = (obj) => (dispatch) => {
         });
 };
 
+
+// API for Submit Interview
 export const generateInterviewScore = (payload) => (dispatch) => {
+
+    dispatch({ type: POST_REQUEST_PENDING });
     axios.post("http://localhost:8080/compare", payload)
         .then(res => {
             console.log("COMPARE", res)
+            const score = +res.data.response.match(/\d+$/)?.[0]
+            // console.log("swati", score)
+            // user id
+            const scorePayload = {
+                score,
+                level: payload.user.level,
+                course: payload.user.course
+            }
+            axios.post(`http://localhost:8080/score/addScore/${payload.user.uniqueUserId}`, scorePayload)
+                .then(resp => {
+                    console.log(resp)
+                    console.log("SUCCESS")
+                    dispatch({ type: POST_SCORE_SUCCESS, payload: score })
+                }).catch(error => {
+                    dispatch({ type: POST_REQUEST_FAILURE });
+                })
         })
         .catch((err) => {
             // console.log('API FAILURE', err);
@@ -50,9 +70,11 @@ export const generateInterviewScore = (payload) => (dispatch) => {
 }
 
 
+
 export const getMyscore = (payload) => (dispatch) => {
     axios.get("http://localhost:8080/compare", payload)
         .then(res => {
+            const { response } = res
 
         })
         .catch((err) => {
