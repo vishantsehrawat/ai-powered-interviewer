@@ -38,7 +38,6 @@ export default function SimpleCard() {
             email,
             password
         }
-
         dispatch(Login(userDetails));
     }
 

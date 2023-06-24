@@ -135,7 +135,7 @@ export const InterviewPage = () => {
 
       <Flex flexDirection={"column"} w={"90%"} justifyContent={"space-between"} gap={"50px"}>
         <Loader isLoading={isLoading} />
-        <Counter />
+        <Counter handleSubmit={handleSubmit} />
         <Text color={"white"} as={"b"}>Question {next + 1} : {question[next]}</Text>
 
         {/* Voice to text mic */}
