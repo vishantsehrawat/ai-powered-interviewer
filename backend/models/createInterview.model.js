@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const interviewSchema = new mongoose.Schema({
+    uniqueUserId: {
+        type: String,
+        // required: true,
+    },
     uniqueInterviewId: {
         type: String,
         required: true,
