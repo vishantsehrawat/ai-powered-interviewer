@@ -27,10 +27,19 @@
 // export default Counter;
 import React, { useState, useEffect } from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const Counter = () => {
-    const [minutes, setMinutes] = useState(5);
+const Counter = ({handleSubmit}) => {
+    const {questionSet}=useSelector((store)=>{
+        return {
+            questionSet:store.interviewReducer.questionSet
+        }
+    })
+    const time=questionSet.length*2;
+    const [minutes, setMinutes] = useState(time);
     const [seconds, setSeconds] = useState(0);
+    const navigate=useNavigate()
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -40,7 +49,9 @@ const Counter = () => {
             }
             else if (minutes == 0 && seconds == 0) {
                 clearInterval(timer);
-                alert("Time Out")
+                // alert("Time Out")
+                handleSubmit()
+                navigate("/getscore")
             }
             else {
                 setSeconds(prevSeconds => prevSeconds - 1);

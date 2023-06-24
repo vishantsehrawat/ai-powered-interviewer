@@ -164,7 +164,8 @@ export default function SignupCard() {
                                     }}
                                     type='submit'
                                 >
-                                    <LinkNav to={"/login"}> Sign up</LinkNav>
+                                    {/* <LinkNav to={"/login"}> Sign up</LinkNav> */}
+                                    Sign up
                                 </Button>
                             </Stack>
 

@@ -14,7 +14,7 @@ export const getQuestion = (level, course) => (dispatch) => {
         .then((res) => {
             console.log('res-data', res.data);
             res.filter = filter;
-            dispatch({ type: GET_QUESTION_REQUEST_SUCCESS, payload: res });
+            dispatch({ type: GET_QUESTION_REQUEST_SUCCESS, payload:res});
         })
         .catch((err) => {
             // console.log('API FAILURE', err);
