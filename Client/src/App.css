@@ -28,6 +28,57 @@
   color: #61dafb;
 }
 
+.score-card-list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 10px 20px;
+}
+
+.score-card{
+  background-color: #018bb1;
+  padding: 20px;
+  color: #fff;
+  text-align: left;
+  font-size: 20px;
+  border-radius: 4px;
+}
+.score-card.poor-card, .poor-card{
+  background-color: red;
+}
+.score-card.good-card, .good-card{
+  background-color: rgb(180, 208, 0);
+}
+.score-card.great-card, .great-card{
+  background-color: rgb(0, 224, 60);
+}
+.indigater{
+  color: #fff;
+  padding-top: 10px;
+}
+.indigater span{
+  padding: 6px 10px;
+  margin: 10px;
+}
+.start_interview_btn{
+  background-color: #018bb1;
+  padding: 7px 10px;
+  border: 2px solid #018bb1;
+  color: #fff;
+  transition: 0.3s;
+  font-weight: bold;
+}
+.start_interview_btn:hover{
+  background-color: #ffffff;
+  padding: 7px 10px;
+  color: #018bb1;
+  border: 2px solid #018bb1;
+}
+
+.score-values{
+  padding-left: 50px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
