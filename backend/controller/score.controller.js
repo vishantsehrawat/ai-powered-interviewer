@@ -49,7 +49,7 @@ const setScore = async (req, res) => {
     try {
         const {id} = req.params
         const data = req.body
-        const newScore = new Score(data)
+        const newScore = new Score({...data, userId: id})
         await newScore.save()
         return res.json({
             error: false,
