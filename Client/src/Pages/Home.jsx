@@ -46,16 +46,16 @@ const Home = () => {
                         <div style={{ display: "flex", justifyContent: "center" }}><FaNodeJs size={"25px"} color='#22ff00' /></div>
                         <h1 className='text-center text-xl font-bold'>NODE</h1>
                     </div>
-                    <div value={course} onClick={() => setCourse("java")} style={{
+                    <div value={course} onClick={() => setCourse("Java")} style={{
                         border: "1px solid white", padding: "20px", borderRadius: "10px", width: "25%", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", cursor: "pointer",
-                        backgroundColor: `${course == "java" ? "#653fff" : "#3b3a4f"}`
+                        backgroundColor: `${course == "Java" ? "#653fff" : "#3b3a4f"}`
                     }}>
                         <div style={{ display: "flex", justifyContent: "center" }}><FaJava size={"25px"} color='#ff2a00' /></div>
                         <h1 className='text-center text-xl font-bold'>JAVA</h1>
                     </div>
-                    <div value={course} onClick={() => setCourse("mern")} style={{
+                    <div value={course} onClick={() => setCourse("MERN")} style={{
                         border: "1px solid white", padding: "20px", borderRadius: "10px", width: "25%", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", cursor: "pointer",
-                        backgroundColor: `${course == "mern" ? "#653fff" : "#3b3a4f"}`
+                        backgroundColor: `${course == "MERN" ? "#653fff" : "#3b3a4f"}`
                     }}>
                         <div style={{ display: "flex", justifyContent: "center" }}><FaReact size={"25px"} color='#006aff' /></div>
                         <h1 className='text-center text-xl font-bold'>MERN</h1>

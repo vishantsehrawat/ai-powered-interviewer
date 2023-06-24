@@ -8,6 +8,7 @@ import Result from '../Pages/Result'
 import { InterviewPage } from '../Pages/InterviewPage'
 import { PrivateRoute } from './PrivateRoute'
 import UserProfile from '../Pages/UserProfile'
+import { GetscorePage } from '../Pages/GetscorePage'
 
 
 export const AllRoutes = () => {
@@ -18,7 +19,8 @@ export const AllRoutes = () => {
                 <Route path='/login' element={<Login />}></Route>
                 <Route path='/signup' element={<Signup />}></Route>
                 <Route path='/profile' element={<UserProfile />}></Route>
-                <Route path='/result' element={<Result/>}/>
+                <Route path='/result' element={<Result />} />
+                <Route path='/getscore' element={<GetscorePage />} />
                 <Route path='/interview' element={<PrivateRoute><InterviewPage /></PrivateRoute>} />
             </Routes >
 

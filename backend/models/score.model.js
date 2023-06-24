@@ -21,7 +21,6 @@ const scoreSchema = new mongoose.Schema({
         enum: ["beginner", "intermediate", "expert"]
     },
     date: {
-
         type: Date, default: Date.now()
     }
 

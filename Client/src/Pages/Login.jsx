@@ -44,11 +44,7 @@ export default function SimpleCard() {
 
     // Conditional rendering
     if (isAuth) {
-        if (location.state) {
-            navigate(location.state)
-        } else {
-            navigate("/")
-        }
+        navigate("/")
     }
 
 

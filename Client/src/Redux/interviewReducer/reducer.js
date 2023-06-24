@@ -12,19 +12,19 @@ const initalState = {
     isLoading: false,
     isError: false,
     questionSet: [],
-
+    filter: {}
 };
 
 export const reducer = (state = initalState, { type, payload }) => {
     switch (type) {
         case POST_REQUEST_PENDING:
-            return { ...state, isLoading: true };
+            return { ...state, isLoading: true, filter: {} };
         case GET_QUESTION_REQUEST_SUCCESS:
-            return { ...state, isLoading: false, questionSet: payload.data.data };
+            return { ...state, isLoading: false, questionSet: payload.data.data, filter: payload.filter };
         // case POST_ANSWER_REQUEST_SUCCESS:
         //     return { ...state, isLoading: false, questions: [...state.questions, payload.data] };
         case POST_REQUEST_FAILURE:
-            return { ...state, isLoading: false, isError: true };
+            return { ...state, isLoading: false, isError: true, filter: {} };
 
 
         default:
