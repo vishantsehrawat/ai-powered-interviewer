@@ -2,7 +2,7 @@
 import { GET_QUESTION_REQUEST_SUCCESS, POST_ANSWER_REQUEST_SUCCESS, POST_REQUEST_PENDING, POST_REQUEST_FAILURE, POST_SCORE_SUCCESS } from "../interviewReducer/actionType"
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/question";
+const baseUrl = "http://aiinterviewer.onrender.com/question";
 
 export const getQuestion = (level, course) => (dispatch) => {
     dispatch({ type: POST_REQUEST_PENDING });
@@ -41,9 +41,13 @@ export const postQuestion = (obj) => (dispatch) => {
 
 // API for Submit Interview
 export const generateInterviewScore = (payload) => (dispatch) => {
+<<<<<<< Updated upstream
 
     dispatch({ type: POST_REQUEST_PENDING });
     axios.post("http://localhost:8080/compare", payload)
+=======
+    axios.post("http://aiinterviewer.onrender.com/compare", payload)
+>>>>>>> Stashed changes
         .then(res => {
             console.log("COMPARE", res)
             const score = +res.data.response.match(/\d+$/)?.[0]
@@ -72,7 +76,7 @@ export const generateInterviewScore = (payload) => (dispatch) => {
 
 
 export const getMyscore = (payload) => (dispatch) => {
-    axios.get("http://localhost:8080/compare", payload)
+    axios.get("http://aiinterviewer.onrender.com/compare", payload)
         .then(res => {
             const { response } = res
 
